@@ -13,7 +13,7 @@ function getWeatherForecast(city) {
         .catch((error) => console.error(error));
 }
 function displayWeatherForecast(weatherData) {
-    const days = weatherData.list.slice(0, daysToShow);
+    const days = weatherData.list.map((day) => day.main);
 //     const forecastHTML = days
 //         .map(
 //             (day) => `
@@ -39,10 +39,11 @@ function displayWeatherForecast(weatherData) {
 //         .join('');
     // forecastElement.innerHTML = forecastHTML;
     // cityElement.innerHTML = `<h2>${cityName}</h2>`;
+    console.log(weatherData.list)
     document.getElementById("today").innerHTML = `${days[0].main.temp}°C`
-    document.getElementById("tomorrow").innerHTML = `${days[0].main.temp}°C`
-    document.getElementById("tomorrowplus").innerHTML = `${days[0].main.temp}°C`
-    document.getElementById("tomorrowplusplus").innerHTML = `${days[0].main.temp}°C`
+    document.getElementById("tommorow").innerHTML = `${days[1].main.temp}°C`
+    document.getElementById("tommorowplus").innerHTML = `${days[2].main.temp}°C`
+    document.getElementById("tommorowplusplus").innerHTML = `${days[3].main.temp}°C`
 }
 // function findWeather() {
 //     cityName = document.getElementById("city-input").value;
