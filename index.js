@@ -13,7 +13,10 @@ function getWeatherForecast(city) {
         .catch((error) => console.error(error));
 }
 function displayWeatherForecast(weatherData) {
-    const days = weatherData.list.filter((day) => day.dt_txt.includes("12:00:00") ? true : false);
+    // let now = Number(weatherData.list[0].dt_txt.split(" ")[1].split(":")[0]);
+    const days;
+    if(Number(weatherData.list[0].dt_txt.split(" ")[1].split(":")[0]) > 12) 
+    days = weatherData.list.filter((day) => day.dt_txt.includes("12:00:00") ? true : false);
 //     const forecastHTML = days
 //         .map(
 //             (day) => `
